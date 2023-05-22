@@ -1,0 +1,14 @@
+.carousel-control-prev,
+.carousel-control-next {
+  width: 30px;
+  height: 30px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 30px 30px;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  display: none;
+}
