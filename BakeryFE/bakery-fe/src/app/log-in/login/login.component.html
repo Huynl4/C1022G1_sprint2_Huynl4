@@ -1,0 +1,28 @@
+<div class="main" style="margin: auto">
+  <input type="checkbox" id="chk" aria-hidden="true">
+
+  <div class="signup">
+    <form [formGroup]="formSignUp" (ngSubmit)="signUp()" style="margin-bottom: 50px">
+      <label for="chk" aria-hidden="true" style="color: #573b8a">Đăng ký</label>
+      <input formControlName="username" type="text" name="txt" placeholder="Tên đăng nhập" required="">
+      <input formControlName="name" type="text" name="txt" placeholder="Họ và tên" required="">
+      <input formControlName="email" type="email" name="email" placeholder="Email" required="">
+      <input formControlName="password" type="password" name="pswd" placeholder="Mật khẩu" required="">
+      <p style="color: red;margin-left: 40px;width: 340px">{{messageSignUp}}</p>
+      <button type="submit">Đăng ký</button>
+    </form>
+  </div>
+
+  <div class="login">
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <label for="chk" aria-hidden="true">Đăng nhập</label>
+      <input formControlName="username" type="text" name="username" placeholder="username" required="">
+      <input formControlName="password" type="password" name="pswd" placeholder="Mật khẩu" required="">
+      <p style="color: red;margin-left: 40px;">{{message}}</p>
+      <input type="checkbox" class="tick" formControlName="rememberMe">
+      <p class="p">Ghi nhớ đăng nhập </p> <br>
+      <button type="submit">Đăng nhập</button>
+    </form>
+  </div>
+</div>
+

@@ -9,6 +9,7 @@ import { FooterComponent } from './home/footer/footer.component';
 import { CartComponent } from './cart/cart/cart.component';
 import { HistoryComponent } from './history/history.component';
 import { SearchComponent } from './search-list/search/search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchComponent } from './search-list/search/search.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
