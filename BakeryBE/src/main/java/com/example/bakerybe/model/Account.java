@@ -37,7 +37,7 @@ public class Account {
     public Account(String name, String username, String encode, String email) {
         this.name = name;
         this.username = username;
-        this.password = password;
+        this.password = encode;
         this.email = email;
     }
 

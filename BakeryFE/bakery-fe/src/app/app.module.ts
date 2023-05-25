@@ -9,22 +9,29 @@ import { FooterComponent } from './home/footer/footer.component';
 import { CartComponent } from './cart/cart/cart.component';
 import { HistoryComponent } from './history/history.component';
 import { SearchComponent } from './search-list/search/search.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
+import {HomeModule} from "./home/home.module";
+import {LogInModule} from "./log-in/log-in.module";
+import {LoginComponent} from "./log-in/login/login.component";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    BodyComponent,
-    FooterComponent,
+    SearchComponent,
     CartComponent,
     HistoryComponent,
-    SearchComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    HomeModule,
+    LogInModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

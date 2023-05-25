@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
     window.scroll(0, 780);
 
     this.title.setTitle('Trang Đăng Nhập');
-    this.isLogged = this.token.isLogger();
-    if (this.isLogged) {
-      this.router.navigateByUrl('');
-    }
+    // this.isLogged = this.token.isLogger();
+    // if (this.isLogged) {
+    //   this.router.navigateByUrl('');
+    // }
   }
 
   async login() {
@@ -90,6 +90,7 @@ export class LoginComponent implements OnInit {
           '',
           'success');
         // alert('đăng kí thành công')
+      document.getElementById('login').click()
       }, error => {
         console.log(error);
         for (let i = 0; i < error.error.length; i++) {
