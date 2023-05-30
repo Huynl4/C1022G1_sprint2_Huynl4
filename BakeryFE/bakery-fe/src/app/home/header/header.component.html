@@ -34,7 +34,7 @@
           <li>ENG</li>
         </ul>
       </li>
-<!--      <li><a routerLink="/login">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>-->
+      <!--      <li><a routerLink="/login">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>-->
     </ul>
   </div>
 </div>
@@ -57,19 +57,23 @@
                 </li>
                 <li>ENG <span class="arrow_carrot-down"></span>
                   <ul>
-                    <li>TiếngAnh</li>
+                    <li>Tiếng Anh</li>
                     <li>Tiếng Việt</li>
                   </ul>
                 </li>
-                <li><a routerLink="/login">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+                <li *ngIf="!isLogged"  routerLink="/login">Đăng nhập
+                 <a style="color: white"></a>
+                </li>
+                <li *ngIf="isLogged" class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{account.name}}</a>
+                  <div class="dropdown-menu m-0">
+                    <a (click)="logout()" class="dropdown-item">Đăng xuất</a>
+                  </div>
+                </li>
               </ul>
+
             </div>
-            <div *ngIf="isLogged" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{account.name}}</a>
-              <div class="dropdown-menu m-0">
-                <a (click)="logout()" class="dropdown-item">Đăng xuất</a>
-              </div>
-            </div>
+
             <div class="header__logo">
               <a href="./index.html"><img src="../../../assets/img/logo.png" alt=""></a>
             </div>
@@ -96,7 +100,7 @@
           <ul>
             <li class="active"><a href="./index.html">Trang chủ</a></li>
             <li><a href="./about.html">Dịch vụ</a></li>
-            <li><a href="./shop.html">Cửa hàng</a></li>
+            <li><a routerLink="">Cửa hàng</a></li>
             <li><a href="#">Trang</a>
               <ul class="dropdown">
                 <li><a href="./shop-details.html">Danh sách chi tiết</a></li>

@@ -1,1 +1,59 @@
-<p>detail works!</p>
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__text">
+          <h2>Chi tiết sản phẩm</h2>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="breadcrumb__links">
+          <a href="./index.html">Home</a>
+          <a href="./shop.html">Shop</a>
+          <span>Sweet autumn leaves</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Details Section Begin -->
+<section class="product-details spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="product__details__img">
+          <div class="product__details__big__img">
+            <img class="big_img" [src]="infoProduct.image" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="product__details__text">
+          <!--          <div class="product__label">Cupcake</div>-->
+          <h4>{{infoProduct?.name}}</h4>
+          <h5>{{infoProduct?.price| number }} &nbsp; đ</h5>
+          <p>{{infoProduct.description}}</p>
+          <ul>
+            <li>Nhà cung cấp: <span>{{infoProduct?.category}}</span></li>
+            <li>Loại bánh: <span>{{infoProduct?.supplier}}</span></li>
+            <!--            <li>Tags: <span>Gadgets, minimalisstic</span></li>-->
+          </ul>
+          <div class="product__details__option">
+            <div class="quantity">
+              <div class="pro-qty">
+                <input type="text" value="2">
+              </div>
+            </div>
+            <a href="#" class="primary-btn">Thêm giỏ hàng</a>
+            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Shop Details Section End -->
+

@@ -14,6 +14,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {HomeModule} from "./home/home.module";
 import {LogInModule} from "./log-in/log-in.module";
 import {LoginComponent} from "./log-in/login/login.component";
+import { ListSearchComponent } from './list-search/list-search/list-search.component';
+import { InfoComponent } from './info/info/info.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {LoginComponent} from "./log-in/login/login.component";
     SearchComponent,
     CartComponent,
     HistoryComponent,
-    LoginComponent
+    LoginComponent,
+    ListSearchComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

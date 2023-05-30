@@ -9,7 +9,7 @@ export interface Product {
   description?: string;
   image?: string;
   orderDetail?: OrderDetail;
-  category?: Category;
-  supplier?: Supplier;
+  category?: string;
+  supplier?: string;
   quantity?: number;
 }
