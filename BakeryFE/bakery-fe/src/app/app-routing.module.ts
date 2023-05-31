@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'getListSearchResults', component: ListSearchComponent},
   {path: 'cart', component: CartComponent},
   {path: 'info', component: InfoComponent},
-  {path: 'history/:id', component: HistoryComponent}
+  {path: 'history/:id', component: HistoryComponent},
 
 
 ];

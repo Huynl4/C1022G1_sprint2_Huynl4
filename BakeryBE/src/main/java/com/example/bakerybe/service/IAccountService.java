@@ -13,4 +13,5 @@ public interface IAccountService {
     List<Account> findAll();
     void save(Account account);
     Account findByIdAccount(long id);
+    Account findByIdInt(Integer id);
 }

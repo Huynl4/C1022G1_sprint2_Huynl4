@@ -55,4 +55,9 @@ public class ProductService implements IProductService {
     public IProductDto detailProduct(int id) {
         return productRepository.detailProduct(id);
     }
+
+    @Override
+    public Product findByIdInt(Integer id) {
+        return this.productRepository.findById(id).orElse(null);
+    }
 }

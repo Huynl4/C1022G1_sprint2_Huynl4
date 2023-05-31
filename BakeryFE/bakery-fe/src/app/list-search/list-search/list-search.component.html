@@ -1,1 +1,72 @@
-<p>list-search works!</p>
+<!-- Categories Section Begin -->
+<div class="categories container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="categories__slider owl-carousel d-flex">
+        <div class="categories__item">
+          <div class="categories__item__icon">
+            <span class="flaticon-029-cupcake-3"></span>
+            <h5>Bánh mì ngọt</h5>
+          </div>
+        </div>
+        <div class="categories__item">
+          <div class="categories__item__icon">
+            <span class="flaticon-034-chocolate-roll"></span>
+            <h5>Bánh mì mặn</h5>
+          </div>
+        </div>
+        <div class="categories__item">
+          <div class="categories__item__icon">
+            <span class="flaticon-005-pancake"></span>
+            <h5>Bánh mì chay</h5>
+          </div>
+        </div>
+        <div class="categories__item">
+          <div class="categories__item__icon">
+            <span class="flaticon-030-cupcake-2"></span>
+            <h5>Bánh mì Canada</h5>
+          </div>
+        </div>
+        <div class="categories__item">
+          <div class="categories__item__icon">
+            <span class="flaticon-006-macarons"></span>
+            <h5>Bánh mì Pháp</h5>
+          </div>
+        </div>
+        <div class="categories__item">
+          <div class="categories__item__icon">
+            <span class="flaticon-006-macarons"></span>
+            <h5>Bánh mì Thụy Sĩ</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Categories Section End -->
+
+<section class="product spad container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let product of listSearchResults, index as i">
+        <div class="product__item">
+          <div class="product__item__pic set-bg"><img [src]="product.image" alt=""
+                                                      style="width: 300px; height: 300px; object-fit: scale-down">
+            <div class="product__label">
+              <span routerLink="/detail/{{product.id}}">Xem chi tiết</span>
+            </div>
+          </div>
+          <div class="product__item__text">
+            <h6><a href="#">{{product?.name}}</a></h6>
+            <div class="product__item__price">{{product.price| number }} &nbsp; đ</div>
+            <div class="cart_add">
+              <a href="#">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--    <div class="col-12 text-center">-->
+    <!--    </div>-->
+  </div>
+</section>

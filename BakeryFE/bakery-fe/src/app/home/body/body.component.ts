@@ -109,47 +109,47 @@ export class BodyComponent implements OnInit {
     this.loadListBanhChay();
   }
 
-  // addCart(id: number) {
-  //   let quantity = 1
-  //   // const quantity = parseInt(value)
-  //   if (this.isLogged == true) {
-  //     Swal.fire({
-  //       title: 'Bạn bạn hiện tại chưa đăng nhập',
-  //       text: 'Bạn có muốn vào trang đăng nhập không?',
-  //       icon: 'question',
-  //       showCancelButton: true,
-  //       confirmButtonColor: '#0099FF',
-  //       cancelButtonColor: '#BBBBBB',
-  //       confirmButtonText: 'Đăng nhập',
-  //       cancelButtonText: 'Không'
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         this.shareService.sendClickEvent()
-  //         this.router.navigateByUrl('/login')
-  //         this.ngOnInit()
-  //       }
-  //     });
-  //   } else {
-  //     this.cartService.addCart(this.token.getId(), id, quantity, this.sizeFood).subscribe(next => {
-  //       debugger
-  //       Swal.fire({
-  //         position: 'center',
-  //         title: 'Đã thêm vào giỏ hàng thành công',
-  //         icon: 'success',
-  //         showConfirmButton: false,
-  //         timer: 1000
-  //       });
-  //       this.shareService.sendClickEvent()
-  //     }, error => {
-  //       Swal.fire({
-  //         position: 'center',
-  //         icon: 'error',
-  //         title: 'Thêm mới thất bại!',
-  //         text: 'Thêm mới thất bại',
-  //         showConfirmButton: false,
-  //         timer: 2000
-  //       });
-  //     })
-  //   }
-  // }
+  addCart(id: number) {
+    let quantity = 1
+    // const quantity = parseInt(value)
+    if (this.isLogged == true) {
+      Swal.fire({
+        title: 'Bạn bạn hiện tại chưa đăng nhập',
+        text: 'Bạn có muốn vào trang đăng nhập không?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#0099FF',
+        cancelButtonColor: '#BBBBBB',
+        confirmButtonText: 'Đăng nhập',
+        cancelButtonText: 'Không'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.shareService.sendClickEvent()
+          this.router.navigateByUrl('/login')
+          this.ngOnInit()
+        }
+      });
+    } else {
+      this.cartService.addCart(this.token.getId(), id, quantity, this.sizeFood).subscribe(next => {
+        debugger
+        Swal.fire({
+          position: 'center',
+          title: 'Đã thêm vào giỏ hàng thành công',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.shareService.sendClickEvent()
+      }, error => {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Thêm mới thất bại!',
+          text: 'Thêm mới thất bại',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      })
+    }
+  }
 }

@@ -25,4 +25,6 @@ public interface IProductService {
 
    IProductDto detailProduct(int id);
 
+   Product findByIdInt(Integer id);
+
 }

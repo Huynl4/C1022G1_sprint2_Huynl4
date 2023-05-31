@@ -5,6 +5,8 @@ import {TokenService} from "../../service/token.service";
 import {ShareService} from "../../service/share.service";
 import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
+import {ProductService} from "../../service/product.service";
+import {InfoService} from "../../service/info.service";
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,9 @@ export class HeaderComponent implements OnInit {
               private token: TokenService,
               private share: ShareService,
               private loginService: LoginService,
-              private router: Router) {
+              private router: Router,
+              private infoService: InfoService,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -72,15 +76,15 @@ export class HeaderComponent implements OnInit {
     console.log(this.inputValue);
   }
 
-  scrollToElement() {
+    scrollToElement() {
     window.scroll(0, 2500);
   }
 
-  // getInfoAccount(id: number) {
-  //   this.productService.findByIdAccount(id).subscribe(next => {
-  //     this.infoAccount = next;
-  //     console.log(next);
-  //   });
-  // }
+  getInfoAccount(id: number) {
+    this.productService.findByIdAccount(id).subscribe(next => {
+      this.infoAccount = next;
+      console.log(next);
+    });
+  }
 
 }

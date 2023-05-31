@@ -146,7 +146,7 @@
             <h6><a href="#">{{product?.name}}</a></h6>
             <div class="product__item__price">{{product.price| number }} &nbsp; đ</div>
             <div class="cart_add">
-              <a href="#">Add to cart</a>
+              <a href="#" (click)="addCart(product.id)">Thêm vào giỏ</a>
             </div>
           </div>
         </div>
@@ -392,6 +392,7 @@
             <h2>Những khoảnh khắc ngọt ngào được lưu lại làm kỷ niệm.</h2>
           </div>
           <h5><i class="fa fa-instagram"></i> @bakeryhuynl4</h5>
+
         </div>
       </div>
       <div class="col-lg-8">

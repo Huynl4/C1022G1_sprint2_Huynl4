@@ -47,4 +47,9 @@ public class AccountService implements IAccountService {
     public Account findByIdAccount(long id) {
         return iAccountRepository.findByIdAccount(id);
     }
+
+    @Override
+    public Account findByIdInt(Integer id) {
+        return this.iAccountRepository.findById(id).orElse(null);
+    }
 }

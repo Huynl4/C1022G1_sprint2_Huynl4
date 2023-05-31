@@ -9,9 +9,8 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__links">
-          <a href="./index.html">Home</a>
-          <a href="./shop.html">Shop</a>
-          <span>Sweet autumn leaves</span>
+          <!--          <a href="./index.html">Home</a>-->
+          <!--          <a href="./shop.html">Shop</a>-->
         </div>
       </div>
     </div>
@@ -26,29 +25,31 @@
       <div class="col-lg-6">
         <div class="product__details__img">
           <div class="product__details__big__img">
-            <img class="big_img" [src]="infoProduct.image" alt="">
+            <img class="big_img" [src]="infoProduct?.image" alt="">
           </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="product__details__text">
-          <!--          <div class="product__label">Cupcake</div>-->
           <h4>{{infoProduct?.name}}</h4>
           <h5>{{infoProduct?.price| number }} &nbsp; đ</h5>
-          <p>{{infoProduct.description}}</p>
+          <p>{{infoProduct?.description}}</p>
+
           <ul>
-            <li>Nhà cung cấp: <span>{{infoProduct?.category}}</span></li>
-            <li>Loại bánh: <span>{{infoProduct?.supplier}}</span></li>
-            <!--            <li>Tags: <span>Gadgets, minimalisstic</span></li>-->
+            <li>Nhà cung cấp:
+              <div>{{infoProduct?.category}}</div>
+            </li>
+            <li>Loại bánh:
+              <div>{{infoProduct?.supplier}}</div>
+            </li>
           </ul>
           <div class="product__details__option">
             <div class="quantity">
               <div class="pro-qty">
-                <input type="text" value="2">
+                <input type="text" value="2" #quantity>
               </div>
             </div>
-            <a href="#" class="primary-btn">Thêm giỏ hàng</a>
-            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+            <button class="primary-btn" (click)="addCart(infoProduct.id,quantity.value)">Thêm giỏ hàng</button>
           </div>
         </div>
       </div>
@@ -57,3 +58,37 @@
 </section>
 <!-- Shop Details Section End -->
 
+<!-- Related Products Section Begin -->
+<section class="related-products spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-title">
+          <!--          <h2>Sản phẩm khác</h2>-->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="related__products__slider owl-carousel">
+        <div class="col-lg-3" *ngFor="let product of infoProductList; let i = index">
+          <div class="product__item">
+            <div class="product__item__pic set-bg">
+              <img [src]="product.image" alt="" style="width: 300px; height: 300px; object-fit: scale-down">
+              <div class="product__label">
+                <a [routerLink]="['/detail', product.id]">Xem chi tiết</a>
+              </div>
+            </div>
+            <div class="product__item__text">
+              <h6><a href="#">{{product?.name}}</a></h6>
+              <div class="product__item__price">{{product.price| number }} &nbsp; đ</div>
+              <div class="cart_add">
+                <a href="#">Add to cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Related Products Section End -->

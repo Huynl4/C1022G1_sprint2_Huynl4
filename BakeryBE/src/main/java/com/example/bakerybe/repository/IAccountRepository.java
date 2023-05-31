@@ -20,8 +20,6 @@ public interface IAccountRepository extends JpaRepository<Account, Integer> {
 
     Boolean existsByUsername(String username);
 
-    @Modifying
-    @Transactional
     @Query(value = "select * from account where id = :id ", nativeQuery = true)
     Account findByIdAccount(@Param("id") long id);
 }
