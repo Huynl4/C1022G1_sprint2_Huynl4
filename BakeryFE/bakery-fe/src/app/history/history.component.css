@@ -1,0 +1,184 @@
+/* CSS cho trang web */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.modal-dialog {
+  max-width: 600px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.page-link {
+  color: #007bff;
+}
+
+.page-link:hover {
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page-link:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+}
+
+/* CSS cho modal header */
+.modal-header {
+  background-color: #2b5dca;
+  color: white;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+/* CSS cho nút đóng modal */
+.btn-close {
+  color: white;
+}
+
+/* CSS cho nút Đóng */
+.modal-footer .btn-primary {
+  background-color: #2b5dca;
+  color: white;
+}
+
+/* CSS cho bảng trong modal */
+.modal-body table {
+  min-height: 35vh;
+}
+
+/* CSS cho ô tiêu đề trong bảng */
+thead th {
+  font-weight: bold;
+}
+
+/* CSS cho hình ảnh sản phẩm */
+td img {
+  height: 80px;
+  width: 80px;
+}
+.container {
+  margin-top: 20px;
+}
+
+.table {
+  font-size: 14px;
+}
+
+th {
+  font-weight: bold;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #2b5dca;
+  color: #fff;
+  border-color: #2b5dca;
+}
+
+.btn-primary:hover {
+  background-color: #20469a;
+  border-color: #20469a;
+}
+
+h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  height: calc(50%); /* Sửa chiều cao container tùy theo yêu cầu */
+  overflow-y: auto;
+}
+
+

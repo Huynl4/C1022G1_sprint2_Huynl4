@@ -1,15 +1,12 @@
 package com.example.bakerybe.controller;
 
-import com.example.bakerybe.model.Account;
-import com.example.bakerybe.model.Category;
-import com.example.bakerybe.model.IProductDto;
-import com.example.bakerybe.model.Product;
-import com.example.bakerybe.service.IAccountService;
-import com.example.bakerybe.service.ICategoryService;
-import com.example.bakerybe.service.IProductService;
+import com.example.bakerybe.model.*;
+import com.example.bakerybe.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +24,10 @@ public class ProductController {
     @Autowired
     private IAccountService accountService;
 
+    @Autowired
+    private IOrderService orderService;
+    @Autowired
+    private IOrderDetailService orderDetailService;
 
     @GetMapping("/list-banh-ngot")
     public ResponseEntity<List<Product>> getListBanhNgot(@RequestParam("page") int page,
@@ -105,6 +106,7 @@ public class ProductController {
         List<Product> listSearchResults = productService.getListSearchResultsOption(keyword, id, pageable);
         return new ResponseEntity<>(listSearchResults, HttpStatus.OK);
     }
+
     @GetMapping("/info/{id}")
     public ResponseEntity<Account> findById(@PathVariable long id) {
         Account accountList = accountService.findByIdAccount(id);
@@ -112,5 +114,18 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(accountList, HttpStatus.OK);
+    }
+
+    @GetMapping("/oder/{id}")
+    public ResponseEntity<Page<Orders>> getListOder(@PathVariable("id") int id,
+                                                    @PageableDefault(size = 3) Pageable pageable) {
+        Page<Orders> oderPage = orderService.findAllByAccountId(id, pageable);
+        return new ResponseEntity<>(oderPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/oderDetail/{id}")
+    public ResponseEntity<List<OrderDetail>> getListOderDetail(@PathVariable("id") int id) {
+        List<OrderDetail> oderDetailList = orderDetailService.oderDetailById(id);
+        return new ResponseEntity<>(oderDetailList, HttpStatus.OK);
     }
 }

@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="breadcrumb__text">
-          <h2>Giỏ hàng</h2>
+          <h2 class="giohang">Giỏ hàng</h2>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
@@ -33,30 +33,57 @@
               <th></th>
             </tr>
             </thead>
-            <tbody *ngFor="let x of cartDto;index as i">
-            <tr>
+            <tbody>
+            <tr *ngFor="let x of cartDto; index as i">
               <td class="product__cart__item">
-                <div class="product__cart__item__pic">
-                  <img [src]="x.product.image" alt="">
-                </div>
                 <div class="product__cart__item__text">
-                  <h6>{{x.product.name}}</h6>
-<!--                  <h5>{{x.product.price| number}}  đ</h5>-->
+                  <p class="product-name">{{x.product.name}}</p>
+                </div>
+                <div class="product__cart__item__pic">
+                  <img class="rounded-image" [src]="x.product.image" alt="">
                 </div>
               </td>
               <td class="quantity__item">
                 <div class="quantity">
-                  <div class="pro-qty">
-                    <span class="dec qtybtn" (click)="x.quantity > 0 && stepDown(x?.id, x.quantity.toString())">-</span>
-                    <input type="text" value="{{x.quantity}}">
-                    <span class="inc qtybtn" (click)="stepUp(x?.id, x.quantity.toString())">+</span>
+                  <div class="quantity">
+                    <button class="dec qtybtn" (click)="x.quantity > 0 && stepDown(x?.id, x.quantity.toString())">-
+                    </button>
+                    <input class="quantity-input" type="text" value="{{x.quantity}}">
+                    <button class="inc qtybtn" (click)="stepUp(x?.id, x.quantity.toString())">+</button>
                   </div>
                 </div>
               </td>
-              <td class="cart__price">{{total | number}}đ</td>
-              <td class="cart__close"><span class="icon_close" (click)="deleteCart(x.id)"></span></td>
+              <td class="cart__price">{{x.quantity * x.product.price | number}}đ</td>
+              <td class="cart__close">
+                <span class="icon_close delete" (click)="deleteCart(x.id)"></span>
+              </td>
             </tr>
             </tbody>
+
+            <!--            <tbody>-->
+            <!--            <tr *ngFor="let x of cartDto;index as i">-->
+            <!--              &lt;!&ndash;              <td class="product__cart__item">&ndash;&gt;-->
+            <!--              <td class="quantity__item">-->
+            <!--                <div class="product__cart__item__text">-->
+            <!--                  <p>{{x.product.name}}</p>-->
+            <!--                </div>-->
+            <!--                <div class="product__cart__item__pic">-->
+            <!--                  <img [src]="x.product.image" alt="">-->
+            <!--                </div>-->
+            <!--              </td>-->
+            <!--              <td class="quantity__item">-->
+            <!--                <div class="quantity">-->
+            <!--                  <div class="pro-qty">-->
+            <!--                    <span class="dec qtybtn" (click)="x.quantity > 0 && stepDown(x?.id, x.quantity.toString())">-</span>-->
+            <!--                    <input type="text" value="{{x.quantity}}">-->
+            <!--                    <span class="inc qtybtn" (click)="stepUp(x?.id, x.quantity.toString())">+</span>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </td>-->
+            <!--              <td class="cart__price">{{x.quantity * x.product.price | number}}đ</td>-->
+            <!--              <td class="cart__close"><span class="icon_close" (click)="deleteCart(x.id)"></span></td>-->
+            <!--            </tr>-->
+            <!--            </tbody>-->
           </table>
         </div>
         <div class="row">
@@ -67,7 +94,7 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="continue__btn update__btn">
-<!--              <a href="#"><i class="fa fa-spinner"></i> Update cart</a>-->
+              <!--              <a href="#"><i class="fa fa-spinner"></i> Update cart</a>-->
             </div>
           </div>
         </div>
@@ -76,16 +103,21 @@
         <div class="cart__discount">
           <h6>Mã giảm giá</h6>
           <form action="#">
-            <input type="text" placeholder="Coupon code">
-            <button type="submit">Áp dụng</button>
+            <input placeholder="Code giảm giá" class="input" name="text" type="text">
+            <button class="code" type="submit">Áp dụng</button>
           </form>
         </div>
         <div class="cart__total">
           <h6>Hình thức thanh toán</h6>
           <ul>
             <li>Phí vận chuyển <span>20,000 đ</span></li>
-            <li>Tổng tiền <span>{{total +  20000 | number}} đ</span></li>
+            <li>Tổng tiền <span>{{total + 20000 | number}} đ</span></li>
           </ul>
+<!--          <p class="pay">Thanh toán</p>-->
+          <button *ngIf="!isPaypal" type="button" (click)="paypal()"
+                  class="btn btn-dark btn-block btn-lg1"
+                  data-mdb-ripple-color="dark">Thanh toán
+          </button>
           <div id="myPaypal"></div>
         </div>
       </div>

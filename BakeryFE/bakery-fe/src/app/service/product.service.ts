@@ -40,7 +40,7 @@ export class ProductService {
     return this.httpClient.get<Product[]>('http://localhost:8080/api/auth/changeListForOptionList?page=' + page + '&size=' + size + '&keyword=' + keyword + "&id=" + id)
   }
 
-  findByIdAccount(id: number): Observable<any> {
+    findByIdAccount(id: number): Observable<any> {
     debugger
     return this.httpClient.get<any>('http://localhost:8080/api/auth/info/' + id);
   }

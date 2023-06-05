@@ -64,7 +64,6 @@ export class DetailComponent implements OnInit {
   private getDetailById(id: number) {
     this.productService.findProductById(id).subscribe(data => {
       this.infoProduct = data;
-      console.log(this.infoProduct);
 
     });
   }
@@ -90,7 +89,6 @@ export class DetailComponent implements OnInit {
       });
     }else {
       this.cartService.addCart(this.token.getId(),id,quantity, this.size).subscribe(next=>{
-        debugger
         Swal.fire({
           position: 'center',
           title: 'Đã thêm vào giỏ hàng thành công',

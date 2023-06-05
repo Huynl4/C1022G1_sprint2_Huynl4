@@ -39,14 +39,9 @@ export class LoginComponent implements OnInit {
     window.scroll(0, 780);
 
     this.title.setTitle('Trang Đăng Nhập');
-    // this.isLogged = this.token.isLogger();
-    // if (this.isLogged) {
-    //   this.router.navigateByUrl('');
-    // }
   }
 
   async login() {
-
     this.loginService.login(this.form.value).subscribe(next => {
         if (this.form.controls.rememberMe.value) {
           this.token.rememberMe(next.token, next.id, next.name, next.email, next.roles, 'local');
@@ -56,10 +51,8 @@ export class LoginComponent implements OnInit {
             iconColor: "#3CB815",
             confirmButtonText: 'OK',
             confirmButtonColor: '#3CB815',
-            // showConfirmButton: false,
             timer: 2500
           });
-          // token, id, name,email, roles, storage
         } else {
           this.token.rememberMe(next.token, next.id, next.name, next.email, next.roles, 'session');
         }
@@ -80,7 +73,6 @@ export class LoginComponent implements OnInit {
 
       }
     );
-
   }
 
   signUp() {
@@ -89,7 +81,6 @@ export class LoginComponent implements OnInit {
         Swal.fire('Đăng kí thành công',
           '',
           'success');
-        // alert('đăng kí thành công')
       document.getElementById('login').click()
       }, error => {
         console.log(error);

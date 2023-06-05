@@ -29,7 +29,7 @@ public class CartRestController {
     private IOrderService orderService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createOrUpdate(@RequestBody CartDTO cartDto) {
+    public ResponseEntity<?> createOrUpdate(@RequestBody CartDTOO cartDto) {
         Cart cart = new Cart();
         Account account = accountService.findById(cartDto.getAccountId());
         Product product = productService.findProduct(cartDto.getProductId());
@@ -118,7 +118,6 @@ public class CartRestController {
 
     @PostMapping("/buy")
     public ResponseEntity<?> buy(@RequestBody OrderProductDTO oderProductDTO) {
-//        System.out.println(oderProductDTO.getId());
         List<Cart> list = cartService.findAllByUser(accountService.findById(oderProductDTO.getAccount()));
         System.out.println(oderProductDTO.getDateOrder());
         Orders bill = new Orders();
@@ -137,4 +136,5 @@ public class CartRestController {
         cartService.deleteCartByIdUser(oderProductDTO.getAccount());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }

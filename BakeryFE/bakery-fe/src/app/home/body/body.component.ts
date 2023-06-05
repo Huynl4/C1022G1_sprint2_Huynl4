@@ -124,7 +124,7 @@ export class BodyComponent implements OnInit {
         cancelButtonText: 'Không'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.shareService.sendClickEvent()
+          this.shareService.sendClickEvent();
           this.router.navigateByUrl('/login')
           this.ngOnInit()
         }

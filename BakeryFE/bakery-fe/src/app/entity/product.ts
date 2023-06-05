@@ -12,4 +12,6 @@ export interface Product {
   category?: string;
   supplier?: string;
   quantity?: number;
+  nameCategory?: string;
+  nameSupplier?: string;
 }

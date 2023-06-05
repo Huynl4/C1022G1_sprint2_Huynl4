@@ -98,9 +98,9 @@ a , button {
 
 .input:focus, input:hover {
   outline: none;
-  border-color: rgba(234,76,137,0.4);
+  border-color: rgba(50, 150, 200, 0.7);
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+  box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
 }
 
 .icon {
@@ -109,6 +109,32 @@ a , button {
   fill: #9e9ea7;
   width: 1rem;
   height: 1rem;
+}
+
+/*//modal css*/
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.avatar {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.modal-footer {
+  border-top: none;
 }
 
 

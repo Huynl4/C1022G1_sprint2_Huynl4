@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IOrderRepository extends JpaRepository<Orders, Long> {
-    @Query(value = "select * from oder where account_id =:id", nativeQuery = true)
+    @Query(value = "select * from orders where account_id =:id", nativeQuery = true)
     Page<Orders> findAllByAccountId(@Param("id") Integer account_id, Pageable pageable);
 }

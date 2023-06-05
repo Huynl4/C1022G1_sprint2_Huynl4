@@ -2,7 +2,7 @@ import {Account} from './account';
 
 export interface Oder {
   id?: number;
-  oderDate?: string;
+  orderDate?: string;
   account?: Account;
 
 }

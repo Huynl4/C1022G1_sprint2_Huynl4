@@ -27,8 +27,6 @@ export class CartService {
       accountId: id,
       productId: productId,
     };
-    console.log(dto.accountId)
-    console.log(dto.productId)
     return this.httpClient.post<any>('http://localhost:8080/api/cart/increase', dto);
   }
 

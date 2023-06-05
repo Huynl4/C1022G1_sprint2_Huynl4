@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../../service/cart.service";
 import {TokenService} from "../../service/token.service";
 import {ShareService} from "../../service/share.service";
@@ -14,6 +14,7 @@ import {render} from "creditcardpayments/creditCardPayments";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+
   items: Product[] = [];
   idAccount: any;
   cartDto: Cart[] = [];
@@ -27,6 +28,7 @@ export class CartComponent implements OnInit {
               private shareService: ShareService,
               private orderService: OrderService) {
     this.paypal();
+    this.isPaypal = false;
   }
 
   ngOnInit(): void {
@@ -35,37 +37,15 @@ export class CartComponent implements OnInit {
   }
 
   getValue() {
-    this.total = 20000;
-    if (this.cartDto != null) {
-      this.quantity = this.cartDto.length;
-      for (let i = 0; i < this.cartDto.length; i++) {
-        if (this.cartDto[i].size == '10kg') {
-          this.total += this.cartDto[i].product.price * this.cartDto[i].quantity;
-        }
-        if (this.cartDto[i].size == '15kg') {
-          this.total += (this.cartDto[i].product.price + 15000) * this.cartDto[i].quantity;
-        }
-        if (this.cartDto[i].size == '20kg') {
-          this.total += (this.cartDto[i].product.price + 20000) * this.cartDto[i].quantity;
-          debugger
-        }
-        if (this.cartDto[i].size == '30kg') {
-          this.total += (this.cartDto[i].product.price + 30000) * this.cartDto[i].quantity;
-        }
-        if (this.cartDto[i].size == '35kg') {
-          this.total += (this.cartDto[i].product.price + 35000) * this.cartDto[i].quantity;
-        }
-      }
-    }
+    this.total = 0;
   }
-
 
   getCartList(): void {
     this.idAccount = Number(this.tokenService.getId());
     this.cartService.showAllCart(this.idAccount).subscribe(next => {
       this.cartDto = next;
       for (let i = 0; i < next.length; i++) {
-        this.total = +next[i].product.price * +next[i].quantity;
+        this.total += +next[i].product.price * +next[i].quantity;
       }
     });
   }
@@ -100,6 +80,7 @@ export class CartComponent implements OnInit {
   }
 
   stepDown(productId: number, size: string) {
+    debugger
     this.cartService.reduceQuantity(this.tokenService.getId(), productId, size).subscribe(next => {
       this.shareService.sendClickEvent();
       this.getCartList();
@@ -135,8 +116,11 @@ export class CartComponent implements OnInit {
 
   private addBill() {
     let currentTime = new Date();
-    let formatTime = currentTime.toLocaleString();
-    this.orderService.addBill(this.tokenService.getId(), this.total, formatTime).subscribe(next => {
+    let formatTime1 = currentTime.getFullYear();
+    let formatTime2 = currentTime.getMonth() + 1;
+    let formatTime3 = currentTime.getDate();
+    let date = formatTime1 + "/" + formatTime2 + "/" + formatTime3;
+    this.orderService.addBill(parseInt(this.tokenService.getId()), this.total, date).subscribe(next => {
       Swal.fire({
         position: 'center',
         title: 'Đã thanh toán thành công',
@@ -160,6 +144,5 @@ export class CartComponent implements OnInit {
   }
 
   private loader() {
-
   }
 }

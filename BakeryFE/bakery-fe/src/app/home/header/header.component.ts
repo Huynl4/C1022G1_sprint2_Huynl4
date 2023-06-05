@@ -7,6 +7,7 @@ import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
 import {ProductService} from "../../service/product.service";
 import {InfoService} from "../../service/info.service";
+import {Account} from "../../entity/account";
 
 @Component({
   selector: 'app-header',
@@ -15,12 +16,14 @@ import {InfoService} from "../../service/info.service";
 })
 export class HeaderComponent implements OnInit {
 
+  // @ts-ignore
   account: Account = {displayName: '', id: '', imageURL: '', rpDisplayName: '', name: ''};
   isLogged = false;
   role = '';
   @Input() inputValue: string;
   private id: number;
   infoAccount: Account;
+
   constructor(@Inject(DOCUMENT) private document: any,
               private scroller: ViewportScroller,
               private token: TokenService,
@@ -76,8 +79,8 @@ export class HeaderComponent implements OnInit {
     console.log(this.inputValue);
   }
 
-    scrollToElement() {
-    window.scroll(0, 2500);
+  scrollToElement() {
+    window.scroll(0, 1100);
   }
 
   getInfoAccount(id: number) {

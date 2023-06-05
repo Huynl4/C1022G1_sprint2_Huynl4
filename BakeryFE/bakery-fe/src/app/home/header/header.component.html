@@ -34,7 +34,6 @@
           <li>ENG</li>
         </ul>
       </li>
-      <!--      <li><a routerLink="/login">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>-->
     </ul>
   </div>
 </div>
@@ -68,6 +67,10 @@
                   <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{account.name}}</a>
                   <div class="dropdown-menu m-0">
                     <a (click)="logout()" class="dropdown-item">Đăng xuất</a>
+                    <a routerLink="/history/{{account.id}}" class="dropdown-item">Lịch sủ mua hàng</a>
+                    <a (click)="getInfoAccount(account.id)" class="dropdown-item" data-bs-toggle="modal"
+                       data-bs-target="#info" href="#">Thông tin cá nhân</a>
+
                   </div>
                 </li>
               </ul>
@@ -88,18 +91,6 @@
                   </svg>
                   <input placeholder="Search" type="search" class="input" [(ngModel)]="inputValue">
                 </div>
-
-
-                <!--                <div action="" class="search-box d-flex justify-content-end ps-4">-->
-                <!--                  <input type="text" id="search-text" placeholder="Tìm kiếm sản phẩm"  [(ngModel)]="inputValue">-->
-                <!--                  <button id="search-btn" (click)="onSearch()">-->
-                <!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"-->
-                <!--                         viewBox="0 0 16 16">-->
-                <!--                      <path-->
-                <!--                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
-                <!--                    </svg>-->
-                <!--                  </button>-->
-                <!--                </div>-->
               </div>
               <div class="header__top__right__cart">
                 <a routerLink="/cart"><img src="../../../assets/img/icon/cart.png" alt=""> <span>()</span></a>
@@ -119,7 +110,7 @@
           <ul>
             <li class="active"><a href="./index.html">Trang chủ</a></li>
             <li><a href="./about.html">Dịch vụ</a></li>
-            <li><a (click)="scrollToElement()">Cửa hàng</a></li>
+            <li><a (click)="scrollToElement()" routerLink="">Cửa hàng</a></li>
             <li><a href="#">Trang</a>
               <ul class="dropdown">
                 <li><a href="./shop-details.html">Danh sách chi tiết</a></li>
@@ -140,4 +131,32 @@
 </header>
 <!-- Header Section End -->
 
+<!--//modal-->
+<div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title"><b>Thông tin cá nhân</b></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <img class="avatar" src="{{account.avatar}}" alt="Avatar">
+          </div>
+          <div class="col-md-8">
+            <div><strong>Tên khách hàng:</strong> {{account.name}}</div>
+            <div><strong>Địa chỉ:</strong> {{account.address}}</div>
+            <div><strong>Số điện thoại:</strong> {{account.phoneNumber}}</div>
+            <div><strong>Email:</strong> {{account.email}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+        <button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Chỉnh sửa</button>
+      </div>
+    </div>
+  </div>
+</div>
 

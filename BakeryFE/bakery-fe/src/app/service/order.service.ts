@@ -10,13 +10,14 @@ export class OrderService {
   constructor(private httpClient: HttpClient) {
   }
 
-  addBill(userId: any, total: number, time: string): Observable<any> {
-    debugger
+  addBill(userId: number, total: number, time: string): Observable<any> {
+
     let dto = {
       account: userId,
       dateOrder: time,
       total: total
     }
+    console.log(dto)
     return this.httpClient.post("http://localhost:8080/api/cart/buy", dto);
   }
 }
